@@ -1,0 +1,39 @@
+server:
+  port: 8081
+
+spring:
+  h2:
+    console:
+      settings:
+        trace: true
+      enabled: true
+      path: /h2-console
+    username: user
+    password: password
+
+  jpa:
+    show-sql: true
+
+  application:
+    name: todo-service
+
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    base-url: http://localhost:9411/
+
+eureka:
+  client:
+    registerWithEureka: true
+
+    serviceUrl:
+      defaultZone: ${EUREKA_HOSTNAME:http://localhost:8761}/eureka/
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

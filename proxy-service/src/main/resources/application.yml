@@ -1,0 +1,31 @@
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_HOSTNAME:http://localhost:8761}/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+
+ribbon:
+  eureka:
+    enabled: true
+  ReadTimeout: 5000
+
+spring:
+  zipkin:
+    base-url: http://localhost:9411/ # this is the default already, change this if you have a different host or port
+  sleuth:
+    sampler:
+      probability: 1
+
+  application:
+    name: proxy-service
+
+logging:
+  level:
+    root: error
+    com.melardev: debug
+    org.springframework: info
